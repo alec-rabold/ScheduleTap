@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import ScheduleBlocks from './ScheduleBlocks'
-import { convertTime24to12, getEarliestLatestTimes } from '../util/util'
+import { convertTime24to12, getTimeWindow } from '../util/util'
 
 export default class Schedule extends React.Component {
     constructor(props) {
@@ -19,11 +19,11 @@ export default class Schedule extends React.Component {
         const defaultStartTime = 1000;
         const defaultEndTime = 1600;
 
-        let timeWindow = getEarliestLatestTimes(sections);
+        let timeWindow = getTimeWindow(sections);
         let earliestStartTime = Math.min(timeWindow.start, defaultStartTime);
         let latestEndTime = Math.max(timeWindow.end, defaultEndTime);
 
-        let startHour= earliestStartTime/100;
+        let startHour = earliestStartTime/100;
         let endHour = latestEndTime/100;
 
         const numCols = 6;
