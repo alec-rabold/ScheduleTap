@@ -1,3 +1,32 @@
+// Returns the earliest start time and latest end time in an array of sections
+// e.g. {start: 900, end: 1650}
+export const getTimeWindow = (sections) => {
+    let earliestStartTime = 2400;
+    let latestEndTime = 0;
+
+    sections.forEach(section => {
+        section.meeting_times.forEach(meeting => {
+            let times = parseStartEndFromTimeblock(meeting.time);
+            let start = parseInt(times.start);
+            let end = parseInt(times.end);
+
+            if(start < earliestStartTime) {
+                earliestStartTime = start;
+            }
+            if (end > latestEndTime) {
+                latestEndTime = end;
+            }
+        })
+    });
+
+    let res = {
+        start: earliestStartTime,
+        end: latestEndTime,
+    }
+
+    return res;
+}
+
 // Returns start and end times in 24-hour format 
 // e.g. {start: 1000, end: 1150}
 export const parseStartEndFromTimeblock = (timeblock) => {
