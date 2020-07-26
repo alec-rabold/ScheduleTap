@@ -20,8 +20,6 @@ export default class Schedule extends React.Component {
         const defaultEndTime = 1600;
 
         let timeWindow = getEarliestLatestTimes(sections);
-        console.log('getEarliestLatestTimes(sections)');
-        console.log(timeWindow);
         let earliestStartTime = Math.min(timeWindow.start, defaultStartTime);
         let latestEndTime = Math.max(timeWindow.end, defaultEndTime);
 
