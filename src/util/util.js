@@ -1,6 +1,6 @@
 // Returns the earliest start time and latest end time in an array of sections
 // e.g. {start: 900, end: 1650}
-export const getEarliestLatestTimes = (sections) => {
+export const getTimeWindow = (sections) => {
     let earliestStartTime = 2400;
     let latestEndTime = 0;
 
