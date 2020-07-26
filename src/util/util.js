@@ -6,9 +6,6 @@ export const getTimeWindow = (sections) => {
 
     sections.forEach(section => {
         section.meeting_times.forEach(meeting => {
-            console.log('section.meeting_times:');
-            console.log(meeting);
-
             let times = parseStartEndFromTimeblock(meeting.time);
             let start = parseInt(times.start);
             let end = parseInt(times.end);
