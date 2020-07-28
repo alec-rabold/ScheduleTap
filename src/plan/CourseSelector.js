@@ -66,7 +66,7 @@ export default class CourseSelector extends React.Component {
       }
 
     render() {
-        const { subject, handleChosenCourse, resetSelectorFor } = this.props;
+        const { subject, chosenCourses, handleCurrentCourse, handleChosenCourse, handleRemoveCartItem, resetSelectorFor } = this.props;
         const { courses, isLoaded } = this.state;
 
         return (
@@ -76,7 +76,7 @@ export default class CourseSelector extends React.Component {
                     <BackButton onClick={() => resetSelectorFor("subject")} />
                     <Breadcrumbs trail={[subject.subj_abbr]} />
                     {isLoaded
-                        ? <CourseList courses={courses} handleChosenCourse={handleChosenCourse} />
+                        ? <CourseList courses={courses} chosenCourses={chosenCourses} handleCurrentCourse={handleCurrentCourse} handleChosenCourse={handleChosenCourse} handleRemoveCartItem={handleRemoveCartItem} />
                         : <LoadingIcon />
                     }
                 </div>    

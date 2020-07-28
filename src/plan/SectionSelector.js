@@ -63,7 +63,7 @@ export default class SectionSelector extends React.Component {
 
 
     render() {
-        const { course, handleChosenSection, resetSelectorFor } = this.props;
+        const { course, chosenSections, handleChosenSection, handleRemoveCartItem, resetSelectorFor } = this.props;
         const { sections, isLoaded } = this.state;
 
         let trail = course.course_name.split(' ');
@@ -74,7 +74,7 @@ export default class SectionSelector extends React.Component {
                     <BackButton onClick={() => resetSelectorFor("course")} />
                     <Breadcrumbs trail={trail} />
                     {isLoaded 
-                        ? <SectionList sections={sections} handleChosenSection={handleChosenSection} />
+                        ? <SectionList sections={sections} chosenSections={chosenSections} handleChosenSection={handleChosenSection} handleRemoveCartItem={handleRemoveCartItem} />
                         : <LoadingIcon />
                     }
                 </div>          
