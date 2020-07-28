@@ -89,3 +89,18 @@ export const convertTime24to12 = (time24h) => {
     if (hour === 0) hour = 12;
     return hour + ':00' + (time24h < 12 ? ' am' : ' pm');
 }
+
+export const getColor = (index) => {
+    const colors = ["blue", "green", "red", "purple", "yellow", "orange"]
+    return colors[index % colors.length];
+}
+
+export const shallowItemsArrIncludes = (items, item) => {
+    let res = false;
+    items.forEach((itm) => {
+        if(itm.course_id === item.course_id) {
+            res = true;
+        }
+    })
+    return res;
+}

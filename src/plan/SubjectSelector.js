@@ -55,7 +55,7 @@ export default class SubjectSelector extends React.Component {
     }
 
     render() {
-        const { handleChosenSubject } = this.props;
+        const { handleCurrentSubject } = this.props;
         const { subjects, isLoaded } = this.state;
         
         return (
@@ -63,7 +63,7 @@ export default class SubjectSelector extends React.Component {
                 <h2 className={"title pl-15 pt-15"}>Subjects:</h2> 
                 <div className="box">
                     {isLoaded 
-                        ? <SubjectList subjects={subjects} handleChosenSubject={handleChosenSubject} />
+                        ? <SubjectList subjects={subjects} handleCurrentSubject={handleCurrentSubject} />
                         : <LoadingIcon />
                     }
                 </div>
@@ -76,5 +76,5 @@ export default class SubjectSelector extends React.Component {
 SubjectSelector.propTypes = {
     college: PropTypes.string.isRequired,
     term: PropTypes.string.isRequired,
-    handleChosenSubject: PropTypes.func.isRequired,
+    handleCurrentSubject: PropTypes.func.isRequired,
 };

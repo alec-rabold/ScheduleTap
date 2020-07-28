@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ScheduleBlock from './ScheduleBlock'
+import { getColor } from '../util/util';
 
 export default class ScheduleBlocks extends React.Component {
     constructor(props) {
@@ -23,7 +24,7 @@ export default class ScheduleBlocks extends React.Component {
         //  ----> for each day
         //  ------> create a <ScheduleBlock />
         let scheduleBlocks = [];
-        sections.forEach(section => {
+        sections.forEach((section, sectionNum) => {
             section.meeting_times.forEach(meeting => {
                 let days = meeting.days.split('');
                 days.forEach((day, index) => {
@@ -36,7 +37,7 @@ export default class ScheduleBlocks extends React.Component {
                             offsets={{
                                 startHour: startHour,
                             }}
-                            color={"blue"}
+                            color={getColor(sectionNum)}
                         />
                     )
                 })

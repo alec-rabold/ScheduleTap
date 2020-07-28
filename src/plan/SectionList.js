@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import Section from './Section'
+import { shallowItemsArrIncludes } from '../util/util'
   
 export default class SectionList extends React.Component {
     constructor(props) {
@@ -72,7 +73,7 @@ export default class SectionList extends React.Component {
     }
 
     render() {
-        const { handleChosenSection } = this.props;
+        const { chosenSections, handleChosenSection, handleRemoveCartItem } = this.props;
 
         return (
             <React.Fragment>
@@ -84,7 +85,7 @@ export default class SectionList extends React.Component {
                         {this.state.filtered.map(section => (
                         <li key={section.course_id} className={"selector-row"} onClick={() => handleChosenSection(section)}>
                             <div className="row-item">
-                                <Section section={section} />
+                                <Section section={section} handleChosenSection={handleChosenSection} handleRemoveCartItem={handleRemoveCartItem} chosen={shallowItemsArrIncludes(chosenSections, section)} />
                             </div>
                         </li>
                         ))}

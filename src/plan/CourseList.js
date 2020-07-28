@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import Course from './Course'
+import { shallowItemsArrIncludes } from '../util/util'
   
 export default class CourseList extends React.Component {
     constructor(props) {
@@ -66,7 +67,7 @@ export default class CourseList extends React.Component {
     }
 
     render() {
-        const { handleChosenCourse } = this.props;
+        const { chosenCourses, handleCurrentCourse, handleChosenCourse, handleRemoveCartItem } = this.props;
 
         return (
             <React.Fragment>
@@ -75,10 +76,12 @@ export default class CourseList extends React.Component {
                 </form>
                 <div className={"scroll-container"}>
                     <ul className={"list scrollable"}>
-                        {this.state.filtered.map(course => (
-                        <li key={course.course_id}  className={"selector-row"} onClick={() => handleChosenCourse(course)}>
+                        {this.state.filtered
+                            .sort((a,b) => a.course_name.localeCompare(b.course_name))
+                            .map(course => (
+                        <li key={course.course_id}  className={"selector-row"} onClick={() => handleCurrentCourse(course)}>
                             <div className="row-item">
-                                <Course course={course} />
+                                <Course course={course} handleChosenCourse={handleChosenCourse} handleRemoveCartItem={handleRemoveCartItem} chosen={shallowItemsArrIncludes(chosenCourses, course)} />
                             </div>
                         </li>
                         ))}
@@ -91,5 +94,5 @@ export default class CourseList extends React.Component {
 
 CourseList.propTypes = {
     courses: PropTypes.array.isRequired,
-    handleChosenCourse: PropTypes.func.isRequired,
+    handleCurrentCourse: PropTypes.func.isRequired,
 };

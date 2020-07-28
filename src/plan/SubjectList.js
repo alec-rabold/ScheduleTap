@@ -82,7 +82,7 @@ export default class SubjectList extends React.Component {
     }
 
     render() {
-        const { handleChosenSubject } = this.props;
+        const { handleCurrentSubject } = this.props;
 
         return (
             <React.Fragment>
@@ -92,9 +92,9 @@ export default class SubjectList extends React.Component {
                 <div className={"scroll-container"}>
                     <ul ref={this.listRef} className={"list scrollable"}>
                         {this.state.filtered.map(subject => (
-                        <li key={subject.subj_abbr} className={"selector-row"} onClick={() => handleChosenSubject(subject)}>
+                        <li key={subject.subj_abbr} className={"selector-row"} onClick={() => handleCurrentSubject(subject)}>
                             <div className="row-item">
-                                <Subject subject={subject}/>
+                                <Subject subject={subject} />
                             </div>
                         </li>
                         ))}
@@ -107,5 +107,5 @@ export default class SubjectList extends React.Component {
 
 SubjectList.propTypes = {
     subjects: PropTypes.array.isRequired,
-    handleChosenSubject: PropTypes.func.isRequired,
+    handleCurrentSubject: PropTypes.func.isRequired,
 };

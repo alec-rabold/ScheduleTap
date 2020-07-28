@@ -23,8 +23,8 @@ export default class Schedule extends React.Component {
         let earliestStartTime = Math.min(timeWindow.start, defaultStartTime);
         let latestEndTime = Math.max(timeWindow.end, defaultEndTime);
 
-        let startHour = earliestStartTime/100;
-        let endHour = latestEndTime/100;
+        let startHour = Math.floor(earliestStartTime/100);
+        let endHour = Math.ceil(latestEndTime/100);
 
         const numCols = 6;
         const numRows = (endHour - startHour + 1) * 12;
